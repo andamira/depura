@@ -1,0 +1,42 @@
+[package]
+name = "depura"
+description = "simple logging, benchmarking, debugging"
+version = "0.0.1"
+edition = "2021"
+resolver = "2"
+rust-version = "1.67.0"
+authors = ["José Luis Cruz <joseluis@andamira.net>"]
+repository = "https://github.com/andamira/depura"
+documentation = "https://docs.rs/depura"
+license = "MIT OR Apache-2.0"
+include = [
+	"/src/**/*.rs",
+	"/Cargo.toml",
+	"/README.md",
+	"/LICENSE-*",
+]
+categories = ["development-tools::debugging"]
+keywords = []
+publish = true
+
+[dependencies]
+log = "0.4"
+simplelog = { version = "0.12.0", default-features = false, features = ["local-offset"] }
+
+human-repr = "1.0.1"
+instant = { version = "0.1.12", features = [ "wasm-bindgen", "inaccurate" ] }
+time = { version = "0.3.17", features = ["local-offset", "formatting"] }
+
+[features]
+default = ["std", "safe"]
+std = []
+safe = []
+nightly = []
+
+[dev-dependencies]
+
+[badges]
+maintenance = { status = "experimental" }
+
+[package.metadata.docs.rs]
+all-features = true
