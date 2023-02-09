@@ -11,7 +11,7 @@ use log::*;
 use simplelog::*;
 use time::format_description;
 
-use crate::{error::Result, logger::MultiLogger};
+use crate::{error::DepuraResult as Result, logger::MultiLogger};
 
 /// An individual logger builder.
 #[derive(Clone, Debug)]

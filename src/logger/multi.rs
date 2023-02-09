@@ -10,7 +10,7 @@ use simplelog::*;
 use time::{format_description, OffsetDateTime};
 
 use crate::{
-    error::{Error, Result},
+    error::{DepuraError, DepuraResult as Result},
     logger::Logger,
 };
 
@@ -71,7 +71,7 @@ impl MultiLogger {
         /* prepare each logger */
 
         if self.loggers.is_empty() {
-            return Err(Error::NoLoggers);
+            return Err(DepuraError::NoLoggers);
         }
 
         for mut logger in self.loggers {

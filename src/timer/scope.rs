@@ -94,41 +94,41 @@ macro_rules! log_time {
 #[macro_export]
 macro_rules! error_time {
     (target: $target:expr, $($arg:tt)+) => (
-        $crate::log_time!(target: $target, log::Level::Error, log::LevelFilter::Error, $($arg)+)
+        $crate::log_time!(target: $target, $crate::Level::Error, $crate::LevelFilter::Error, $($arg)+)
     );
-    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), log::Level::Error, log::LevelFilter::Error, $($arg)+) )
+    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), $crate::Level::Error, $crate::LevelFilter::Error, $($arg)+) )
 }
 /// Logs the time with the [`warn!`][log::warn] macro.
 #[macro_export]
 macro_rules! warn_time {
     (target: $target:expr, $($arg:tt)+) => (
-        $crate::log_time!(target: $target, log::Level::Warn, log::LevelFilter::Warn, $($arg)+)
+        $crate::log_time!(target: $target, $crate::Level::Warn, $crate::LevelFilter::Warn, $($arg)+)
     );
-    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), log::Level::Warn, log::LevelFilter::Warn, $($arg)+) )
+    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), $crate::Level::Warn, $crate::LevelFilter::Warn, $($arg)+) )
 }
 /// Logs the time with the [`info!`][log::info] macro.
 #[macro_export]
 macro_rules! info_time {
     (target: $target:expr, $($arg:tt)+) => (
-        $crate::log_time!(target: $target, log::Level::Info, log::LevelFilter::Info, $($arg)+)
+        $crate::log_time!(target: $target, $crate::Level::Info, $crate::LevelFilter::Info, $($arg)+)
     );
-    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), log::Level::Info, log::LevelFilter::Info, $($arg)+) )
+    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), $crate::Level::Info, $crate::LevelFilter::Info, $($arg)+) )
 }
 /// Logs the time with the [`debug!`][log::debug] macro.
 #[macro_export]
 macro_rules! debug_time {
     (target: $target:expr, $($arg:tt)+) => (
-        $crate::log_time!(target: $target, log::Level::Debug, log::LevelFilter::Debug, $($arg)+)
+        $crate::log_time!(target: $target, $crate::Level::Debug, $crate::LevelFilter::Debug, $($arg)+)
     );
-    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), log::Level::Debug, log::LevelFilter::Debug, $($arg)+) )
+    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), $crate::Level::Debug, $crate::LevelFilter::Debug, $($arg)+) )
 }
 /// Logs the time with the [`trace!`][log::trace] macro.
 #[macro_export]
 macro_rules! trace_time {
     (target: $target:expr, $($arg:tt)+) => (
-        $crate::log_time!(target: $target, log::Level::Trace, log::LevelFilter::Trace, $($arg)+)
+        $crate::log_time!(target: $target, $crate::Level::Trace, $crate::LevelFilter::Trace, $($arg)+)
     );
-    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), log::Level::Trace, log::LevelFilter::Trace, $($arg)+) )
+    ($($arg:tt)+) => ($crate::log_time!(target: module_path!(), $crate::Level::Trace, $crate::LevelFilter::Trace, $($arg)+) )
 }
 
 /// Determines if a message logged at the specified level in that module will
@@ -161,9 +161,9 @@ macro_rules! trace_time {
 macro_rules! log_enabled {
     (target: $target:expr, $lvl:expr) => {{
         let lvl = $lvl;
-        lvl <= log::STATIC_MAX_LEVEL
-            && lvl <= log::max_level()
-            && log::__private_api_enabled(lvl, $target)
+        lvl <= $crate::log_crate::STATIC_MAX_LEVEL
+            && lvl <= $crate::log_crate::max_level()
+            && $crate::log_crate::__private_api_enabled(lvl, $target)
     }};
     ($lvl:expr) => {
         log_enabled!(target: __log_module_path!(), $lvl)

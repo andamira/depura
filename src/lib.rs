@@ -16,18 +16,21 @@
 #![cfg_attr(feature = "safe", forbid(unsafe_code))]
 #![cfg_attr(feature = "nightly", feature(doc_cfg))]
 
-pub mod error;
-
-#[cfg(feature = "std")]
+mod error;
 mod logger;
 mod timer;
 
+pub use error::{DepuraError, DepuraResult};
+
 pub use self::timer::*;
 #[cfg(feature = "std")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "std")))]
 pub use logger::{Logger, MultiLogger};
 
 /* re-exports */
+
+/// *re-exported*
+#[doc(inline)]
+pub use log as log_crate;
 
 /// *(from [`log`][::log]).*
 pub use log::{debug, error, info, log, trace, warn, Level, LevelFilter};
