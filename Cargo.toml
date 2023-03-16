@@ -21,17 +21,17 @@ publish = true
 
 [dependencies]
 log = "0.4"
-simplelog = { version = "0.12.0", default-features = false, features = ["local-offset"] }
+simplelog = { version = "0.12.0", optional = true, default-features = false, features = ["local-offset"] }
 
-human-repr = "1.0.1"
-instant = { version = "0.1.12", features = [ "wasm-bindgen", "inaccurate" ] }
-time = { version = "0.3.20", features = ["local-offset", "formatting"] }
+human-repr = { version = "1.0.1", optional = true }
+instant = { version = "0.1.12", optional = true, features = [ "wasm-bindgen", "inaccurate" ] }
+time = { version = "0.3.20", default-features = false }
 
 [features]
 default = ["std", "safe"]
-std = []
+std = ["log/std", "instant", "simplelog", "time/local-offset", "time/formatting", "human-repr"]
 safe = []
-nightly = []
+nightly = [] # used only for documentation
 
 [dev-dependencies]
 

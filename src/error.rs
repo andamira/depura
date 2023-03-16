@@ -4,6 +4,7 @@
 //
 
 use log::{ParseLevelError, SetLoggerError};
+#[cfg(feature = "std")]
 use time::error::InvalidFormatDescription;
 
 /// The *depura* result type.
@@ -17,6 +18,8 @@ pub enum DepuraError {
     ParseLevel(ParseLevelError),
 
     /* from the time crate */
+    #[cfg(feature = "std")]
+    #[cfg_attr(feature = "nightly", doc(cfg(feature = "std")))]
     InvalidFormatDescription(InvalidFormatDescription),
 
     /// There are no loggers configured.
@@ -31,6 +34,7 @@ mod core_impls {
         fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
             use DepuraError::*;
             match self {
+                #[cfg(feature = "std")]
                 InvalidFormatDescription(i) => {
                     write!(f, "DepuraError::InvalidFormatDescription({i})")
                 }
@@ -57,6 +61,8 @@ mod core_impls {
             DepuraError::ParseLevel(err)
         }
     }
+    #[cfg(feature = "std")]
+    #[cfg_attr(feature = "nightly", doc(cfg(feature = "std")))]
     impl From<InvalidFormatDescription> for DepuraError {
         fn from(err: InvalidFormatDescription) -> Self {
             DepuraError::InvalidFormatDescription(err)
