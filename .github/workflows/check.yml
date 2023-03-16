@@ -103,7 +103,7 @@ jobs:
     strategy:
       matrix:
         # NOTE: custom
-        msrv: [1.60.0] # 2021 edition requires 1.56
+        msrv: [1.63.0]
     name: ubuntu / ${{ matrix.msrv }}
     steps:
       - name: "checkout"
