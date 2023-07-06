@@ -16,21 +16,31 @@
 #![cfg_attr(feature = "safe", forbid(unsafe_code))]
 #![cfg_attr(feature = "nightly", feature(doc_cfg))]
 
-mod error;
-mod logger;
-mod timer;
+// features safeguarding
+#[cfg(all(feature = "std", feature = "no-std"))]
+compile_error!("You can't enable the `std` and `no-std` features at the same time.");
+#[cfg(all(feature = "safe", feature = "unsafe"))]
+compile_error!("You can't enable the `safe` and `unsafe` features at the same time.");
 
-pub use error::{DepuraError, DepuraResult};
-
-pub use self::timer::*;
-#[cfg(feature = "std")]
-pub use logger::{Logger, MultiLogger};
-
-/* re-exports */
-
-/// *re-exported*
+/// The *re-exported* [`log`][::log] crate:
 #[doc(inline)]
-pub use log as log_crate;
+pub use ::log as _log;
 
-/// *(from [`log`][::log]).*
-pub use log::{debug, error, info, log, trace, warn, Level, LevelFilter};
+pub mod error;
+pub mod logger;
+pub mod timer;
+
+// Selected root re-exports
+#[doc(inline)]
+pub use logger::*;
+
+/// Everything is directly available here.
+///
+/// More precisely everything defined in this crate.
+/// Not everything from the re-exported crates.
+pub mod all {
+    #[doc(inline)]
+    pub use super::{error::*, logger::*, timer::*};
+
+    pub use super::_log::{debug, error, info, log, trace, warn, Level, LevelFilter};
+}

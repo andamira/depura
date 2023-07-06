@@ -1,6 +1,6 @@
 // depura::timer
 //
-//!
+//! Time related logging.
 //
 
 #[cfg(feature = "std")]
@@ -13,4 +13,4 @@ pub use timeit::*;
 mod scope;
 #[cfg(feature = "std")]
 #[cfg_attr(feature = "nightly", doc(cfg(feature = "std")))]
-pub use scope::ScopeTime;
+pub use scope::*;

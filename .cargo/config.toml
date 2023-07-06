@@ -1,12 +1,78 @@
 [alias]
 
 # CHECK
+c = "check"
+cb = "check --bin"
+ce = "check --example"
+cr = "check --release"
+cu = "check --no-default-features --features=std"
+cn = "check --no-default-features --features=no-std,safe"
+cnu = "check --no-default-features --features=unsafe"
+cN = "check --target thumbv7m-none-eabi --no-default-features --features=no-std,safe"
+cNu = "check --target thumbv7m-none-eabi --no-default-features --features=no-std,unsafe"
+
+# CLIPPY
 cl = "clippy"
-clq = "clippy --quiet"
+clb = "clippy --bin"
+cle = "clippy --example"
+clr = "clippy --release"
+clu = "clippy --no-default-features --features=std,unsafe"
+cln = "clippy --no-default-features --features=no-std"
+clnu = "clippy --no-default-features --features=no-std,unsafe"
+clN = "clippy --target thumbv7m-none-eabi --no-default-features --features=no-std,safe"
+clNu = "clippy --target thumbv7m-none-eabi --no-default-features --features=no-std,unsafe"
+
+# BUILD
+b = "build"
+bb = "build --bin"
+be = "build --example"
+br = "build --release"
+brb = "build --release --bin"
+bre = "build --release --example"
+bu = "build --no-default-features --features=std,unsafe"
+bn = "build --no-default-features --features=no-std"
+bnu = "build --no-default-features --features=no-std,unsafe"
+bN = "build --target thumbv7m-none-eabi --no-default-features --features=no-std,safe"
+bNu = "build --target thumbv7m-none-eabi --no-default-features --features=no-std,unsafe"
+
+# RUN
+r = "run"
+rb = "run --bin"
+re = "run --example"
+rr = "run --release"
+rrb = "run --release --bin"
+rre = "run --release --example"
+ru = "run --no-default-features --features=std,unsafe"
+rn = "run --no-default-features --features=no-std"
+rnu = "run --no-default-features --features=no-std,unsafe"
+rN = "run --target thumbv7m-none-eabi --no-default-features --features=no-std,safe"
+rNu = "run --target thumbv7m-none-eabi --no-default-features --features=no-std,unsafe"
+
+# TEST
+t = "test"
+tu = "test --no-default-features --features=std,unsafe"
+tn = "test --no-default-features --features=no-std"
+tnu = "test --no-default-features --features=no-std,unsafe"
+tN = "test --target thumbv7m-none-eabi --no-default-features --features=no-std,safe"
+tNu = "test --target thumbv7m-none-eabi --no-default-features --features=no-std,unsafe"
+td = "test --doc"
+tdu = "test --doc --no-default-features --features=std,unsafe"
+tdn = "test --doc --no-default-features --features=no-std"
+tdnu = "test --doc --no-default-features --features=no-std,unsafe"
+tdN = "test --doc --target thumbv7m-none-eabi --no-default-features --features=no-std,safe"
+tdNu = "test --doc --target thumbv7m-none-eabi --no-default-features --features=no-std,unsafe"
+t_ = "test -- --nocapture"
+t_1 = "test -- --test-threads 1 --nocapture"
+
+# PUBLISH
+p = "publish --dry-run"
+pa = "publish --dry-run --allow-dirty"
+PUBLISH = "publish"
+PUBLISHa = "publish --allow-dirty"
 
 # CLEAN PACKAGE
-cp = "clean --package"
-crp = "clean --release --package"
+Cp = "clean --package"
+Crp = "clean --release --package"
 
 # DOC
 d = "doc --no-deps"
@@ -14,53 +80,15 @@ do = "doc --no-deps --open"
 dd = "doc"
 ddo = "doc --open"
 # +nightly
-nd = "doc --no-deps --all-features"
-ndo = "doc --no-deps --open --all-features"
-ndd = "doc --all-features"
-nddo = "doc --open --all-features"
-
-# BUILD
-b = "build"
-bb = "build --bin"
-be = "build --example"
-bq = "build --quiet"
-br = "build --release"
-bqb = "build --quiet --bin"
-bqe = "build --quiet --example"
-brb = "build --release --bin"
-bre = "build --release --example"
-brqb = "build --release --quiet --bin"
-brqe = "build --release --quiet --example"
-
-# RUN
-r = "run"
-rb = "run --bin"
-re = "run --example"
-rq = "run --quiet"
-rr = "run --release"
-rqb = "run --quiet --bin"
-rqe = "run --quiet --example"
-rrb = "run --release --bin"
-rre = "run --release --example"
-rrqb = "run --release --quiet --bin"
-rrqe = "run --release --quiet --example"
-
-# TEST
-t = "test"
-td = "test --doc"
-t_ = "test -- --nocapture"
-t_1 = "test -- --test-threads 1 --nocapture"
+nd = "doc --no-deps --no-default-features --features=nightly,std"
+ndo = "doc --open --no-deps --no-default-features --features=nightly,std"
+ndd = "doc --no-default-features --features=nightly,std"
+nddo = "doc --open --no-default-features --features=nightly,std"
 
 # TREE
 tr = "tree"
 trf = "tree --format {p}:{f}" # with feature list
 trr = "tree --format {p}:{r}" # with repository url
-
-# PUBLISH
-p = "publish --dry-run"
-pa = "publish --dry-run --allow-dirty"
-pp = "publish"
-ppa = "publish --allow-dirty"
 
 # Cargo subcommands:
 ## cargo-expand

@@ -1,6 +1,6 @@
 // depura::logger
 //
-//!
+//! Loggers.
 //
 
 #[cfg(feature = "std")]

@@ -43,7 +43,7 @@ pub fn timeit_log<F: Fn() -> T, T>(
     let (result, duration, text) = timeit_inner(f, text);
 
     if let Some(target) = target {
-        log!(
+        log::log!(
             target: target,
             level,
             "{text} took {}",
@@ -57,6 +57,7 @@ pub fn timeit_log<F: Fn() -> T, T>(
 
 /// Times the duration of a closure, logging or printing it out.
 #[macro_export]
+#[cfg_attr(feature = "nightly", doc(cfg(feature = "std")))]
 macro_rules! timeit {
     // print
     (print, || $closure:expr, $text:literal) => {
@@ -138,22 +139,23 @@ macro_rules! timeit {
 
     // log
     ($level:expr, target: $target:expr, || $closure:expr) => {
-        $crate::timeit_log(Some($target), $level, || $closure, "")
+        $crate::all::timeit_log(Some($target), $level, || $closure, "")
     };
     ($level:expr, target: $target:expr, || $closure:expr, $text:literal) => {
-        $crate::timeit_log(Some($target), $level, || $closure, $text)
+        $crate::all::timeit_log(Some($target), $level, || $closure, $text)
     };
     ($level:expr, target: $target:expr, || $closure:expr, $($arg:tt)+) => {
-        $crate::timeit_log(Some($target), $level, || $closure, &format![$($arg)+])
+        $crate::all::timeit_log(Some($target), $level, || $closure, &format![$($arg)+])
     };
     //
     ($level:expr, || $closure:expr) => {
-        $crate::timeit_log(None, $level, || $closure, "")
+        $crate::all::timeit_log(None, $level, || $closure, "")
     };
     ($level:expr, || $closure:expr, $text:literal) => {
-        $crate::timeit_log(None, $level, || $closure, $text)
+        $crate::all::timeit_log(None, $level, || $closure, $text)
     };
     ($level:expr, || $closure:expr, $($arg:tt)+) => {
-        $crate::timeit_log(None, $level, || $closure, &format![$($arg)+])
+        $crate::all::timeit_log(None, $level, || $closure, &format![$($arg)+])
     };
 }
+pub use timeit;

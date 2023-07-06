@@ -1,6 +1,6 @@
 //
 
-use depura::*;
+use depura::all::*;
 
 fn main() {
     let log_print = Logger::new("print 0")

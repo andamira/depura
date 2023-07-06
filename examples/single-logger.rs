@@ -1,7 +1,7 @@
 //
 //
 
-use depura::*;
+use depura::all::*;
 
 fn main() {
     Logger::new("target 0")

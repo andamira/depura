@@ -103,7 +103,7 @@ jobs:
     strategy:
       matrix:
         # NOTE: custom
-        msrv: [1.63.0]
+        msrv: [1.65.0]
     name: ubuntu / ${{ matrix.msrv }}
     steps:
       - name: "checkout"
