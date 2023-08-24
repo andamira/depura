@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+### Added
+- add features: `safest`, `unsafest`.
+
+### Changed
+- bump MSRV to `1.72.0`
+
+### Fixed
+- refactor manifest.
 
 ## [0.2.0] - 2023-08-24
 
