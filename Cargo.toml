@@ -19,7 +19,7 @@ keywords = []
 publish = true
 
 [features]
-default = ["std", "safe"]
+default = ["std"]
 
 std = ["alloc", "log/std", "instant", "simplelog", "time/local-offset", "time/formatting", "human-repr"]
 alloc = []
@@ -29,6 +29,7 @@ safe = []
 unsafe = []
 
 nightly = [] # used only for documentation
+nightly_docs = ["nightly", "std"]
 
 
 [dependencies]
@@ -46,7 +47,7 @@ simplelog = { version = "0.12.1", optional = true, default-features = false, fea
 
 [package.metadata.docs.rs]
 no-default-features = true
-features = ["nightly", "std"]
+features = ["nightly_docs"]
 
 [badges]
 maintenance = { status = "experimental" }
