@@ -21,12 +21,13 @@ publish = true
 [features]
 default = ["std", "safe"]
 
-std = ["log/std", "instant", "simplelog", "time/local-offset", "time/formatting", "human-repr"]
+std = ["alloc", "log/std", "instant", "simplelog", "time/local-offset", "time/formatting", "human-repr"]
+alloc = []
 no-std = []
-#
+
 safe = []
 unsafe = []
-#
+
 nightly = [] # used only for documentation
 
 
