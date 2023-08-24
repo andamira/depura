@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+
+## [0.2.0] - 2023-08-24
+
 ### Added
 - add features: `nightly_docs`, `alloc`.
 

@@ -1,7 +1,7 @@
 [package]
 name = "depura"
 description = "simple logging, benchmarking, debugging"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 rust-version = "1.71.1" # sync with readme, check.sh & .github/workflows/check.yml
 authors = ["José Luis Cruz <joseluis@andamira.net>"]
@@ -30,7 +30,6 @@ unsafe = []
 
 nightly = [] # used only for documentation
 nightly_docs = ["nightly", "std"]
-
 
 [dependencies]
 log = "0.4"
