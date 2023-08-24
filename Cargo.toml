@@ -34,7 +34,7 @@ nightly_docs = ["nightly", "std"]
 
 [dependencies]
 log = "0.4"
-time = { version = "0.3.22", default-features = false }
+time = { version = "0.3.27", default-features = false }
 
 #* optional *#
 
