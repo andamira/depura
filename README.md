@@ -2,6 +2,7 @@
 
 [![Crate](https://img.shields.io/crates/v/depura.svg)](https://crates.io/crates/depura)
 [![API](https://docs.rs/depura/badge.svg)](https://docs.rs/depura/)
+[![MSRV: 1.71.1](https://flat.badgen.net/badge/MSRV/1.71.1/purple)](https://releases.rs/docs/1.71.1/)
 
 Simple logging, debugging & benchmarking utilities.
 
@@ -10,6 +11,10 @@ See [the documentation](https://docs.rs/depura/) for more information.
 ## Status
 
 This is currently in an experimental stage of development.
+
+## License
+This project is dual licensed under either [MIT](LICENSE-MIT)
+or [Apache-2.0](LICENSE-APACHE) at your option.
 
 ## Contributing
 
