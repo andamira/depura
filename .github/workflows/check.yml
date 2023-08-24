@@ -6,18 +6,18 @@ on:
   push:
     branches: [main]
   pull_request:
+name: check
 
-name: "check"
 jobs:
-
   # 1. format
   fmt:
     name: "stable / fmt"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        # with:
-        #   submodules: true
+      - name: "checkout"
+        uses: actions/checkout@v3
+        with:
+            submodules: true
 
       - name: "Install stable"
         uses: dtolnay/rust-toolchain@stable
@@ -42,6 +42,8 @@ jobs:
     steps:
       - name: "checkout"
         uses: actions/checkout@v3
+        with:
+            submodules: true
 
       - name: "Install ${{ matrix.toolchain }}"
         uses: dtolnay/rust-toolchain@master
@@ -54,60 +56,39 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  # 2. documentation
+  # 3. documentation
   doc:
     name: "nightly / doc"
     runs-on: ubuntu-latest
     steps:
-      # - name: "Install build dependencies"
-      #   # NOTE: custom
-      #   # 
-      #   run: |
-      #     sudo apt update
-      #     sudo apt install -y XXX
-
       - name: "checkout"
         uses: actions/checkout@v3
+        with:
+            submodules: true
 
       - name: "Install nightly"
         uses: dtolnay/rust-toolchain@nightly
 
       - name: "cargo doc"
         # NOTE: custom
-        run: cargo doc --no-deps --features=nightly
+        run: cargo doc --features=nightly
         env:
           RUSTDOCFLAGS: --cfg docsrs
 
-  # 2. hack
-  # hack:
-  #   runs-on: ubuntu-latest
-  #   name: ubuntu / stable / features
-  #   steps:
-  #     - name: "checkout"
-  #       uses: actions/checkout@v3
-  #
-  #     - name: "Install stable"
-  #       uses: dtolnay/rust-toolchain@stable
-  #
-  #     - name: "cargo install cargo-hack"
-  #       uses: taiki-e/install-action@cargo-hack
-  #
-  #     - name: "cargo hack"
-  #       run: cargo hack --feature-powerset check --lib --tests
-
-  # 2. MSRV
+  # 4. minimum supported Rust version
   msrv:
+    name: "ubuntu / ${{ matrix.msrv }}"
     runs-on: ubuntu-latest
     # we use a matrix here just because env can't be used in job names
     # https://docs.github.com/en/actions/learn-github-actions/contexts#context-availability
     strategy:
       matrix:
-        # NOTE: custom
-        msrv: [1.65.0]
-    name: ubuntu / ${{ matrix.msrv }}
+        msrv: [1.71.1] # sync with ../../{readme, Cargo.toml, check.sh}
     steps:
       - name: "checkout"
         uses: actions/checkout@v3
+        with:
+            submodules: true
 
       - name: "Install ${{ matrix.msrv }}"
         uses: dtolnay/rust-toolchain@master
