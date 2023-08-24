@@ -14,7 +14,7 @@ include = [
 	"/README.md",
 	"/LICENSE-*",
 ]
-categories = ["development-tools::debugging"]
+categories = ["development-tools::debugging", "development-tools::profiling"]
 keywords = []
 publish = true
 
