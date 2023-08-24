@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 - add features: `nightly_docs`, `alloc`.
+- add changelog.
 
 ### Changed
 - rename reexported `log` crate to `log_crate` and uninline it.
@@ -73,7 +74,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 - add examples.
 
 
-[unreleased]: https://github.com/andamira/depura/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/andamira/depura/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/andamira/depura/releases/tag/v0.2.0
 [0.1.0]: https://github.com/andamira/depura/releases/tag/v0.1.0
 [0.0.3]: https://github.com/andamira/depura/releases/tag/v0.0.3
 [0.0.2]: https://github.com/andamira/depura/releases/tag/v0.0.2
