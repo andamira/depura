@@ -10,10 +10,12 @@
 #![cfg_attr(feature = "nightly", feature(doc_cfg))]
 
 // features safeguarding
-#[cfg(all(feature = "std", feature = "no-std"))]
-compile_error!("You can't enable the `std` and `no-std` features at the same time.");
+#[cfg(all(feature = "std", feature = "no_std"))]
+compile_error!("You can't enable the `std` and `no_std` features at the same time.");
 #[cfg(all(feature = "safe", feature = "unsafe"))]
 compile_error!("You can't enable the `safe` and `unsafe` features at the same time.");
+
+devela::deprecate_feature![old: "no-std", new: "no_std", since: "0.3.0"];
 
 /// The *re-exported* [`log`][log_crate] crate:
 pub use ::log as log_crate;
