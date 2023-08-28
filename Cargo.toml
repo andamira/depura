@@ -22,6 +22,7 @@ publish = true
 default = ["std"]
 
 # environment features
+# (not enabling "std" declares the library as "no_std")
 std = [ # features that depend on the standard library
 	"alloc",
 	"devela/std",
@@ -32,18 +33,22 @@ std = [ # features that depend on the standard library
 	"time/formatting",
 	"human-repr"
 ]
-alloc = [] # features that depend on allocation (unused)
-no_std = ["devela/no_std"] # features incompatible with "std" (unused)
+alloc = ["devela/alloc"] # features that depend on allocation
+no_std = ["devela/no_std"] # features incompatible with "std"
 
 # safety features
 safe = [] # forbid unsafe at the crate level
-safest = ["safe", "devela/safest"] # forbid unsafe recursively (unused)
+safest = ["safe", "devela/safest"] # forbid unsafe recursively
 unsafe = [] # enable unsafe at the crate lavel (unused)
-unsafest = ["unsafe", "devela/unsafest"] # enable unsafe recursively (unused)
+unsafest = ["unsafe", "devela/unsafest"] # enable unsafe recursively
 
 # nightly features
 nightly = ["devela/nightly"] # used only for enhanced documentation
-nightly_docs = ["nightly", "std"] # features for docs.rs
+nightly_docs = [ # features for docs.rs
+	"nightly",
+	"std",
+	"devela/nightly_docs"
+]
 
 
 [dependencies]

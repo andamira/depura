@@ -9,9 +9,11 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ### Added
 - add features: `safest`, `unsafest`.
+- add `devela` dependency.
 
 ### Changed
 - bump MSRV to `1.72.0`
+- deprecate and rename `no-std` feature to `no_std`.
 
 ### Fixed
 - refactor manifest.
