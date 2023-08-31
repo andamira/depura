@@ -1,6 +1,6 @@
 // depura::lib
 //
-//!
+//! Simple logging, debugging & benchmarking utilities.
 //
 
 // warnings
@@ -31,10 +31,7 @@ pub mod timer;
 #[doc(inline)]
 pub use logger::*;
 
-/// All the items are reexported here.
-///
-/// More precisely everything defined in this crate.
-/// Not everything from the re-exported crates.
+/// All items are reexported here.
 pub mod all {
     #[doc(inline)]
     pub use super::{error::*, logger::*, timer::*};
