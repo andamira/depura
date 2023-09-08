@@ -21,7 +21,9 @@ publish = true
 # ------------------------------------------------------------------------------
 
 [features]
-default = ["std"]
+
+#* capability features *#
+default = []
 
 #* environment features *#
 # (not enabling "std" declares the library as "no_std")
@@ -85,3 +87,12 @@ features = ["nightly_docs"]
 
 [badges]
 maintenance = { status = "experimental" }
+
+# ------------------------------------------------------------------------------
+
+[[example]]
+name = "single-logger"
+required-features = ["std"]
+[[example]]
+name = "multi-logger"
+required-features = ["std"]
