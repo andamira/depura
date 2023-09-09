@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+## [0.4.0] - 2023-09-09
+
 ### Added
 - add feature `full`.
 - add `full` to `nightly_docs`.
@@ -98,7 +100,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 - add examples.
 
 
-[unreleased]: https://github.com/andamira/depura/compare/v0.3.0...HEAD
+[unreleased]: https://github.com/andamira/depura/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/andamira/depura/releases/tag/v0.4.0
 [0.3.0]: https://github.com/andamira/depura/releases/tag/v0.3.0
 [0.2.0]: https://github.com/andamira/depura/releases/tag/v0.2.0
 [0.1.0]: https://github.com/andamira/depura/releases/tag/v0.1.0
