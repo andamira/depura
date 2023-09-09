@@ -24,6 +24,7 @@ publish = true
 
 #* capability features *#
 default = []
+full = [] # enables optional capabilities in this crate (unused)
 
 #* environment features *#
 std = [ # disables `no_std` compatibility and enables `std` functionality
@@ -44,7 +45,7 @@ safest = ["safe", "devela/safest"] # forbid unsafe recursively
 #* nightly features *#
 nightly = ["devela/nightly"] # enables nightly features
 nightly_docs = [ # enables features for docs.rs
-	"nightly", "std",
+	"nightly", "full", "std", "unsafe",
 	"devela/nightly_docs"
 ]
 
