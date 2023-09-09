@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+### Added
+- add feature `full`.
+- add `full` to `nightly_docs`.
+
+### Changed
+- update `devela`, `time`.
+- remove `std` from default features.
+- define required features for examples.
+
+### Fixed
+- refactor manifest, update comments.
+
 ## [0.3.0] - 2023-08-29
 
 ### Added
