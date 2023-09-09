@@ -26,31 +26,25 @@ publish = true
 default = []
 
 #* environment features *#
-# (not enabling "std" declares the library as "no_std")
-std = [ # enables features that depend on the standard library
+std = [ # disables `no_std` compatibility and enables `std` functionality
 	"alloc",
-	"devela/std",
-	"log/std",
-	"instant",
-	"simplelog",
-	"time/local-offset",
-	"time/formatting",
-	"human-repr"
+	"devela/std", "log/std",
+	"instant", "simplelog", "human-repr",
+	"time/local-offset", "time/formatting",
 ]
-alloc = ["devela/alloc"] # features that depend on allocation
-no_std = ["devela/no_std"] # features incompatible with "std"
+alloc = ["devela/alloc"] # enables `alloc` features
+no_std = ["devela/no_std"] # enables features incompatible with "std"
 
 #* safety features *#
-safe = [] # forbid unsafe at the crate level
+unsafest = ["unsafe", "devela/unsafest"] # enables unsafe recursively
+unsafe = [] # enables unsafe features in this crate (unused)
+safe = [] # forbids unsafe in this crate
 safest = ["safe", "devela/safest"] # forbid unsafe recursively
-unsafe = [] # enable unsafe at the crate lavel (unused)
-unsafest = ["unsafe", "devela/unsafest"] # enable unsafe recursively
 
 #* nightly features *#
-nightly = ["devela/nightly"] # enables the nightly features
-nightly_docs = [ # features for docs.rs
-	"nightly",
-	"std",
+nightly = ["devela/nightly"] # enables nightly features
+nightly_docs = [ # enables features for docs.rs
+	"nightly", "std",
 	"devela/nightly_docs"
 ]
 
@@ -63,20 +57,16 @@ time = { version = "0.3.28", default-features = false }
 
 #* optional dependencies *#
 human-repr = { version = "1.1.0", optional = true }
-
 [dependencies.instant]
 optional = true
 version = "0.1.12"
 default-features = false
 features = [ "wasm-bindgen", "inaccurate" ]
-
 [dependencies.simplelog]
 optional = true
 version = "0.12.1"
 default-features = false
 features = ["local-offset"]
-
-[dev-dependencies]
 
 # ------------------------------------------------------------------------------
 
