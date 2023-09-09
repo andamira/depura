@@ -1,6 +1,6 @@
 [package]
 name = "depura"
-description = "simple logging, benchmarking, debugging"
+description = "Logging, benchmarking and debugging."
 version = "0.3.0"
 edition = "2021"
 rust-version = "1.72.0" # sync with readme, check.sh & .github/workflows/check.yml

@@ -1,6 +1,6 @@
 // depura::lib
 //
-//! Simple logging, debugging & benchmarking utilities.
+//! Logging, debugging and benchmarking.
 //
 
 // warnings

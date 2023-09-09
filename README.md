@@ -4,7 +4,7 @@
 [![API](https://docs.rs/depura/badge.svg)](https://docs.rs/depura/)
 [![MSRV: 1.72.0](https://flat.badgen.net/badge/MSRV/1.72.0/purple)](https://releases.rs/docs/1.72.0/)
 
-Simple logging, debugging & benchmarking utilities.
+Logging, debugging & benchmarking.
 
 See [the documentation](https://docs.rs/depura/) for more information.
 
