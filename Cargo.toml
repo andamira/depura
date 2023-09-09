@@ -10,6 +10,8 @@ documentation = "https://docs.rs/depura"
 license = "MIT OR Apache-2.0"
 include = [
 	"/src/**/*.rs",
+	"examples/multi-logger.rs",
+	"examples/single-logger.rs",
 	"/Cargo.toml",
 	"/README.md",
 	"/LICENSE-*",
@@ -81,8 +83,8 @@ maintenance = { status = "experimental" }
 # ------------------------------------------------------------------------------
 
 [[example]]
-name = "single-logger"
+name = "multi-logger"
 required-features = ["std"]
 [[example]]
-name = "multi-logger"
+name = "single-logger"
 required-features = ["std"]
